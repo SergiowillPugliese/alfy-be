@@ -7,11 +7,6 @@ import {
 } from 'class-validator';
 
 class ShoppingListItemDTO {
-  get id(): string {
-    return this._id.toString();
-  }
-  _id: string;
-
   @IsString()
   @IsNotEmpty()
   name: string;

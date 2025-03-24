@@ -41,8 +41,24 @@ export class ShoppingListService {
     }
   }
 
-  findAll() {
-    return `This action returns all shoppingList`;
+  async findAll() {
+    try {
+      const shoppingList = await this.shoppingListModel.find();
+      return {
+        success: true,
+        message: 'Shopping list fetched successfully',
+        data: shoppingList,
+      };
+    } catch (error) {
+      throw new HttpException(
+        {
+          success: false,
+          message: 'Shopping list fetching failed. ' + error.message,
+          data: null,
+        },
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   findOne(id: number) {
