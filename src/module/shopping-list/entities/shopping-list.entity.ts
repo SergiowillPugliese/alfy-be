@@ -24,3 +24,4 @@ export class ShoppingList extends Document {
 }
 
 export const ShoppingListSchema = SchemaFactory.createForClass(ShoppingList);
+ShoppingListSchema.set('timestamps', true);
